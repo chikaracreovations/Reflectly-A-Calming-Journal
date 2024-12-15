@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+
+   
+
+    <title>Daily Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #ffffff;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUJhqIWV8xhGd_3rsDDulhKXYX8y-HV1qkDNC3YaJmP0J2BotIlRrZhIZI&s=10') ;
+  
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px #aaa;
+            background-color: #ffffff;
+         background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsfoGTE_FQ7HzGAAtA-i07wmzVu4UbQfQAY_McEfLCxeThumO2nUVLWIAR&s=10') center;
+  background-size:cover;   
+            
+            
+        }
+        h2 {
+            text-align: center;
+            color: mintcream;
+        }
+        
+       h3 {
+            text-align: center;
+            color: mintcream;
+        } 
+        
+          h4 {
+            font-size: 12px;
+            color: gray;
+            font-style: italic;
+        }
+        input[type="text"], input[type="number"], input[type="date"], textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 2% 2%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* Light colors based on color psychology */
+        #calories {
+            background-color: #ffe0b2; /* Light cyan for refreshment */
+        }
+        #sleep {
+            background-color: #e1bee7; /* Light amber for comfort */
+        }
+        #medicines {
+            background-color: #d4edda; /* Light pink for care */
+        }
+        #water {
+            background-color: #e0f7fa; /* Light purple for calmness */
+        }
+        #agenda {
+            background-color: #ffe0b2; /* Light amber for clarity */
+        }
+        
+        #screenTime {
+          background-color: #ffebee; 
+        }
+        #habits {
+          background-color: #12334667
+        }
+        
+        .journal, #thankful, #lessons, #sucked, #improvement, #accomplishments {
+            background-color: #e1f5fe; /* Light blue for serenity */
+            border: 1px solid #0288d1;
+            border-radius: 5px;
+            height: 150px; /* Fixed height for text boxes */
+            resize: none;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+                        background-color: rgba(255, 255, 255,0.8);
+        }
+        .day-checkboxes {
+    display: flex;
+    gap: 10px;
+}
+
+.circle {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + .circle {
+    background-color: #4CAF50; /* Change to desired color */
+    color: white;
+}
+#imageModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+#modalImage {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+#closeModal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Container to scope authentication-specific styles */
+.auth-module {
+    font-family: Arial, sans-serif;
+}
+
+/* Basic styling for modal */
+.auth-modal {
+    display: none; /* Initially hidden */
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.auth-modal-content {
+    position: absolute; /* Position it absolutely */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    transform: translate(-50%, -50%); /* Shift it back to center */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px; /* Fixed width for modal content */
+    text-align: center;
+}
+.auth-module input {
+    margin: 5px 0;
+    padding: 10px;
+    width: 90%;
+}
+
+.auth-module button {
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.auth-error {
+    color: red;
+}
+
+#logoutButton {
+    display: none; /* Hide logout button initially */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.swiper-container {
+    height: auto;/* Adjust height as needed */
+    overflow: hidden; /* Prevents scrolling of the entire page */
+    width: 100%
+}
+
+
+
+
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+  
+    border-radius: 10px;
+  
+  background-color: rgba(255, 255, 255,0.2); /* White with 50% transparency */
+}   
+    
+    
+  }
+
+  .swiper-slide h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+
+
+
+    </style>
+</head>
+<body>
+  
+  #ChikaraCreovations
+  
+  
+    <div class="container">
+        <h2>Daily Summary</h2>
+        <input type="date" id="date" onchange="loadSummary()" />
+        
+     <!-- Sign-In/Sign-Up Modal within a specific container class -->
+<div class="auth-module">
+    <div id="authModal" class="auth-modal">
+        <div class="auth-modal-content">
+              <span id="closeAuthModal" class="close">&times;</span> <!-- Close button -->
+            
+            <h2>Sign In / Sign Up</h2>
+            
+            <form id="authForm">
+                <input type="email" id="email" placeholder="Email" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <button type="button" id="signInButton">Sign In</button>
+                <button type="button" id="signUpButton">Sign Up</button>
+                <p id="authError" class="auth-error"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Buttons to trigger modal and logout -->
+    <button id="openAuthModal" class="auth-button">Login</button>
+    <button id="logoutButton" class="auth-button">Logout</button>
+</div> 
+
+<button onclick="saveSummary()">Save Summary</button>
+
+ <!-- Background Music -->
+  <audio id="background-music" autoplay loop>
+    <source src="journal.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio> 
+  
+  <!-- Add a button to start the music -->
+<button id="play-music-button">Soft Music</button>
+
+</div>
+
+<br>
+
+  
+
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <!-- Journaling Key Metrics -->
+<!-- Journaling Key Metrics -->
+<div class="swiper-slide">
+  <h2>Journaling Key Metrics</h2>
+  
+  
+  
+  <!-- Sleep -->
+  <div>
+   
+    <h3>Sleep Start Time:</h3>
+    <input type="time" id="sleepStart" onchange="calculateSleepHours()" />
+    <h3>Sleep End Time:</h3>
+    <input type="time" id="sleepEnd" onchange="calculateSleepHours()" />
+     <h3>Sleep Hours:</h3>
+    <input type="number" id="sleep" readonly placeholder="Calculated Sleep Hours" />
+  </div>
+  
+  <!-- Water Intake -->
+  <div>
+    <h3>Water Intake (ml):</h3>
+    <input type="number" id="water" step="0.1" />
+  </div>
+  
+   <div>
+  <h3>Today's Calories:</h3>
+  <input type="number" id="calories" />
+        </div>
+  
+
+        
+        
+                <div>
+            <h3>Today's Habits:</h3>
+            <input type="number" id="habits" placeholder="No. Of Habits Completed "/>
+        </div>
+       
+        <div>
+            <h3>Screen Time (hours):</h3>
+            <input type="number" id="screenTime" step="0.1" />
+        </div>
+        
+        <br>
+        
+  
+
+</div>
+
+    
+    <div class="swiper-slide">
+      <h2>Key Metrics 2</h2>
+       
+  <!-- Workout -->
+  <div>
+    <h3>Workout Duration (Minutes):</h3>
+    <input type="number" id="workouthours" placeholder="Enter duration of workout" />
+  </div>
+  
+  <div>
+    <h4>Select Workout Days</h4>
+    <div class="day-checkboxes">
+        <label>
+            <input type="checkbox" id="monday">
+            <span class="circle">M</span>
+        </label>
+        <label>
+            <input type="checkbox" id="tuesday">
+            <span class="circle">T</span>
+        </label>
+        <label>
+            <input type="checkbox" id="wednesday">
+            <span class="circle">W</span>
+        </label>
+        <label>
+            <input type="checkbox" id="thursday">
+            <span class="circle">T</span>
+        </label>
+        <label>
+            <input type="checkbox" id="friday">
+            <span class="circle">F</span>
+        </label>
+        <label>
+            <input type="checkbox" id="saturday">
+            <span class="circle">S</span>
+        </label>
+        <label>
+            <input type="checkbox" id="sunday">
+            <span class="circle">S</span>
+        </label>
+    </div>
+</div>
+
+  
+  <!-- Medicines -->
+  <div>
+    <h3>Medicines Taken:</h3>
+    <input type="number" id="medicinescount" placeholder="Enter the number of medicines" />
+    <textarea id="medicines" rows="3" placeholder="Enter medicines taken"></textarea>
+
+  </div>
+  
+               <div>
+            <h3>Today's Agenda/To- Do List:</h3>
+            <textarea id="agenda" rows="3"></textarea>
+        </div>
+        
+                <div>
+            <h3>Accomplishments / Completed Tasks:</h3>
+            <textarea id="accomplishments" rows="3" placeholder= "What did I achieve today, no matter how small?"
+            ></textarea>
+        </div>
+  
+  
+
+    </div>
+
+
+
+
+    <!-- Reflection and Gratitude -->
+    <div class="swiper-slide">
+      <h2>Reflection and Gratitude</h2>
+     
+
+             <div>
+            <h3>Today I am thankful for:</h3>
+            <h4> (Gratitude Journaling ) </h4>
+            <textarea id="thankful" rows="5"
+placeholder = "What are three things that I am grateful for today?"
+            ></textarea>
+        </div>
+
+        <div>
+            <h3>Today's Journal and Reflections:</h3>
+            <h4> (Feelings Journal)</h4>
+            <textarea id="journal" class="journal" rows="4"
+            placeholder = 
+  "What were the highlights of my day?
+  
+How did I feel today, and what influenced those feelings?
+
+What steps did I take today to work towards my goals?"
+
+            ></textarea>
+        </div>
+
+        <div>
+            <h3>Today's Lessons:</h3>
+            <textarea id="lessons" rows="3"
+            placeholder = "What new insights or lessons did I learn today?"
+            ></textarea>
+        </div>
+
+    </div>
+
+    <!-- Venting Out -->
+    <div class="swiper-slide">
+      <h2>Venting Out</h2>
+      <p> Don’t Worry Its a Safe Space!</p>
+        <div>
+            <h3>Things that sucked:</h3>
+             <textarea id="sucked" rows="3" placeholder="What challenges or setbacks did I face today?"></textarea>
+            </div>
+        
+        <div>
+            <h3>Areas for Improvement:</h3>
+            <textarea id="improvement" rows="3" placeholder =
+"What could I have done differently today?
+
+What is one thing I can work on for tomorrow?
+
+What mistakes did I make today, and what can I learn from them?"
+            ></textarea>
+        </div>
+    </div>
+
+    <!-- Images and Key Events -->
+    <div class="swiper-slide">
+      <h2>Images and Key Events</h2>
+      <input type="file" id="imageUpload" accept="image/*" />
+      <button id="uploadImageButton">Upload Image</button>
+    </div>
+
+    <!-- Creative Thoughts -->
+    <div class="swiper-slide">
+      <h2>Creative Thoughts</h2>
+      <div>
+        <h3>Ideas, Learnings, or Creativity:</h3>
+        <textarea id="creativeThoughts" rows="6" placeholder="Write down your creative ideas or thoughts"></textarea>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+        
+
+     <br>
+     
+
+
+
+
+      <!-- Inspirational Quotes Section -->
+<div id="quotes-section" class="quotes-section">
+  <h2 id="quote">"Time flies, but you are the pilot."</h2>
+</div>
+
+
+
+        
+
+      
+
+
+        
+
+
+
+ </div>
+    
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  // Import Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+  import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+  import { getFirestore, collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD195VtbWw38Ec0wkZYfS1RA2hPGGniI4Y",
+    authDomain: "journal-9bc9e.firebaseapp.com",
+    projectId: "journal-9bc9e",
+    storageBucket: "journal-9bc9e.firebasestorage.app",
+    messagingSenderId: "626686703337",
+    appId: "1:626686703337:web:517672a8a226c79f072278",
+    measurementId: "G-EGVJMF9YCW"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+  const auth = getAuth(app); // Initialize Firebase Auth
+  
+// Initialize Firebase Authentication and get a reference to the service
+
+// Sign in functionality
+
+
+document.getElementById('signInButton').addEventListener('click', async () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log("User signed in:", userCredential.user);
+
+        // Set today's date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').value = today; // Set today's date
+
+        // Immediately load the summary for today
+         loadSummary(today); // Ensure you wait for this to complete
+    } catch (error) {
+        console.error("Error signing in:", error);
+        document.getElementById('authError').innerText = error.message;
+    }
+});
+
+
+
+// Sign up functionality
+document.getElementById('signUpButton').addEventListener('click', async () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        console.log('Account created and signed in:', user.email);
+        
+        // Hide the modal and show the logout button
+        document.getElementById('authModal').style.display = 'none';
+        document.getElementById('logoutButton').style.display = 'block';
+        document.getElementById('openAuthModal').style.display = 'none';
+        
+        // Call loadSummary after sign-up
+        loadSummary(); // Load summary for today's date
+    } catch (error) {
+        if (error.code === 'auth/email-already-in-use') {
+            document.getElementById('authError').textContent = "Account already exists. Please sign in.";
+        } else {
+            document.getElementById('authError').textContent = "Error signing up: " + error.message;
+        }
+        
+    }
+});
+// Function to clear all form fields
+function clearFormFields() {
+    const fields = [
+        'calories', 'sleep', 'sleepStart', 'sleepEnd', 'medicines', 
+        'medicinescount', 'water', 'workouthours', 'agenda', 
+        'journal', 'thankful', 'lessons', 'sucked', 
+        'improvement', 'accomplishments', 'screenTime'
+    ];
+
+    // Clear fields in the main form
+    fields.forEach(field => {
+        const element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Clear the value if the element exists
+        }
+    });
+
+    // Clear fields in the authentication modal
+    const authFields = ['email', 'password']; // Use the IDs that match your modal's input fields
+    authFields.forEach(field => {
+        const element = document.getElementById(field);
+        if (element) {
+            element.value = ''; // Clear the value if the element exists
+        }
+    });
+}
+
+// Logout functionality
+document.getElementById('logoutButton').addEventListener('click', async () => {
+    try {
+        await signOut(auth);
+        console.log('User signed out.');
+        
+        // Clear all form fields
+        clearFormFields();
+
+        // Update UI
+        document.getElementById('logoutButton').style.display = 'none';
+        document.getElementById('openAuthModal').style.display = 'block'; // Show the authentication modal
+    } catch (error) {
+        console.error("Logout error:", error.message);
+    }
+});
+window.addEventListener('DOMContentLoaded', async () => {
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
+    dateInput.value = today;
+
+    // Check if a user is signed in and load the summary if they are
+    const user = auth.currentUser;
+    if (user) {
+        await loadSummary(); // Load summary for the signed-in user
+    }
+});
+
+
+  // DOM element reference for auth modal
+  const authModal = document.getElementById("authModal");
+
+  // Check user authentication state and show/hide modal
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      authModal.style.display = "none"; // Hide modal if user is signed in
+    } else {
+      authModal.style.display = "block"; // Show modal if user is not signed in
+    }
+  });
+  
+  // Listen for changes in the user's sign-in state
+// Show modal when 'Login' button is clicked
+document.getElementById('openAuthModal').addEventListener('click', () => {
+    document.getElementById('authModal').style.display = 'flex';
+});
+
+// Close modal when clicking outside of modal content
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('authModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+document.getElementById('closeAuthModal').addEventListener('click', () => {
+    document.getElementById('authModal').style.display = 'none';
+});
+
+
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        console.log('User is signed in:', user.email);
+        document.getElementById('logoutButton').style.display = 'block';
+        document.getElementById('openAuthModal').style.display = 'none';
+        document.getElementById('authError').textContent = ''; // Clear errors
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').value = today; // Set date input
+        await loadSummary(today); // Load summary for today's date
+    } else {
+        console.log('No user is signed in.');
+        document.getElementById('logoutButton').style.display = 'none';
+        document.getElementById('openAuthModal').style.display = 'block';
+    }
+});
+  
+  
+const uploadImage = () => {
+    const fileInput = document.getElementById('imageUpload');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const userId = firebase.auth().currentUser.uid;
+        const storageRef = firebase.storage().ref(`images/${userId}/${file.name}`);
+        const firestoreRef = firebase.firestore().collection('users').doc(userId).collection('images');
+
+        // Upload image to Firebase Storage
+        storageRef.put(file).then(snapshot => {
+            snapshot.ref.getDownloadURL().then(url => {
+                // Save the URL to Firestore
+                firestoreRef.add({
+                    url: url,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            });
+        });
+    }
+};
+
+const displayImages = () => {
+    const userId = firebase.auth().currentUser.uid;
+    const imagesRef = firebase.firestore().collection('users').doc(userId).collection('images');
+
+    imagesRef.get().then(querySnapshot => {
+        const imageContainer = document.getElementById('imageContainer');
+        imageContainer.innerHTML = ''; // Clear existing images
+
+        querySnapshot.forEach(doc => {
+            const imageData = doc.data();
+            const imgElement = document.createElement('img');
+            imgElement.src = imageData.url;
+            imgElement.classList.add('image-thumbnail');
+            imgElement.onclick = () => openModal(imageData.url);
+            imageContainer.appendChild(imgElement);
+        });
+    });
+};
+
+const openModal = (imageUrl) => {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imageUrl;
+    modal.style.display = 'block';
+};
+
+const closeModal = () => {
+    document.getElementById('imageModal').style.display = 'none';
+};
+  
+  
+  
+
+ // Update saveSummary to be user-specific
+async function saveSummary() {
+    const user = auth.currentUser; // Get current logged-in user
+    if (!user) {
+        
+
+        return;
+    }
+
+
+
+    const selectedDate = document.getElementById('date').value;
+    console.log('Selected Date for Saving:', selectedDate);
+    
+    
+    
+
+    const summaryData = {
+        calories: document.getElementById('calories').value,
+        sleep: document.getElementById('sleep').value,
+        sleepStart: document.getElementById('sleepStart').value,
+        sleepEnd: document.getElementById('sleepEnd').value,
+        medicines: document.getElementById('medicines').value,
+        medicinescount: document.getElementById('medicinescount').value,
+        water: document.getElementById('water').value,
+        workouthours: document.getElementById('workouthours').value,
+        agenda: document.getElementById('agenda').value,
+        journal: document.getElementById('journal').value,
+        thankful: document.getElementById('thankful').value,
+        lessons: document.getElementById('lessons').value,
+        sucked: document.getElementById('sucked').value,
+        improvement: document.getElementById('improvement').value,
+        accomplishments: document.getElementById('accomplishments').value,
+        screenTime: document.getElementById('screenTime').value,
+    };
+
+    try {
+        // Use the user's uid in the document path to make it user-specific
+        await setDoc(doc(db, "summaries", user.uid, "dailySummaries", selectedDate), summaryData);
+        console.log("Summary successfully saved to Firebase for user:", user.email);
+        alert('Summary saved!');
+    } catch (error) {
+        console.error("Error saving summary:", error);
+    }
+}
+
+// Update loadSummary to be user-specific
+async function loadSummary() {
+    const user = auth.currentUser; // Get current logged-in user
+    if (!user) {
+        
+        return;
+    }
+
+    const selectedDate = document.getElementById('date').value;
+    console.log('Selected Date for Loading:', selectedDate);
+
+    if (!selectedDate) {
+        console.error("Error: No date selected for loading data.");
+        alert("Please select a valid date.");
+        return;
+    }
+
+    try {
+        // Use the user's uid in the document path to make it user-specific
+        const docRef = doc(db, "summaries", user.uid, "dailySummaries", selectedDate);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            console.log("Data loaded from Firebase:", data);
+
+            document.getElementById('calories').value = data.calories ?? '';
+            document.getElementById('sleep').value = data.sleep ?? '';
+            document.getElementById('sleepStart').value = data.sleepStart ?? '';
+            document.getElementById('sleepEnd').value = data.sleepEnd ?? '';
+            document.getElementById('medicines').value = data.medicines ?? '';
+            document.getElementById('medicinescount').value = data.medicinescount ?? '';
+            document.getElementById('water').value = data.water ?? '';
+            document.getElementById('workouthours').value = data.workouthours ?? '';
+            document.getElementById('agenda').value = data.agenda ?? '';
+            document.getElementById('journal').value = data.journal ?? '';
+            document.getElementById('thankful').value = data.thankful ?? '';
+            document.getElementById('lessons').value = data.lessons ?? '';
+            document.getElementById('sucked').value = data.sucked ?? '';
+            document.getElementById('improvement').value = data.improvement ?? '';
+            document.getElementById('accomplishments').value = data.accomplishments ?? '';
+            document.getElementById('screenTime').value = data.screenTime ?? '';
+        } else {
+            console.log("No data found for this date.");
+            alert("No data found for this date.");
+
+            document.getElementById('calories').value = '';
+            document.getElementById('sleep').value = '';
+            document.getElementById('sleepStart').value = '';
+            document.getElementById('sleepEnd').value = '';
+            document.getElementById('medicines').value = '';
+            document.getElementById('medicinescount').value = '';
+            document.getElementById('water').value = '';
+            document.getElementById('workouthours').value = '';
+            document.getElementById('agenda').value = '';
+            document.getElementById('journal').value = '';
+            document.getElementById('thankful').value = '';
+            document.getElementById('lessons').value = '';
+            document.getElementById('sucked').value = '';
+            document.getElementById('improvement').value = '';
+            document.getElementById('accomplishments').value = '';
+            document.getElementById('screenTime').value = '';
+        }
+    } catch (error) {
+        console.error("Error loading summary:", error);
+    }
+}
+
+    function openHealthifyApp() {
+            const appUrl = 'healthify://';
+            const fallbackUrl = 'https://play.google.com/store/apps/details?id=com.healthifyme.basic';
+
+            window.location.href = appUrl;
+
+            setTimeout(function () {
+                window.location.href = fallbackUrl;
+            }, 3000);  // Fallback after 3 seconds if app doesn't open
+        }
+        
+    
+        function openFitNotes() {
+            // Try opening the app using a custom URI scheme (replace with FitNotes URI if available)
+            const appUri = 'intent://#Intent;package=com.github.jamesgay.fitnotes;end'; 
+
+            // Open the Play Store if the app isn't installed
+            const playStoreLink = 'https://play.google.com/store/apps/details?id=com.github.jamesgay.fitnotes';
+
+            // Try to open the app using the URI scheme
+            window.location.href = appUri;
+
+            // Fallback to Play Store after a delay if app isn't installed
+            setTimeout(() => {
+                window.location.href = playStoreLink;
+            }, 1000); // Wait 1 second before redirecting to Play Store
+        }
+        
+        
+
+
+
+  // Attach saveSummary and loadSummary functions to window for external access
+  window.saveSummary = saveSummary;
+  window.loadSummary = loadSummary;
+window.openFitNotes = openFitNotes;
+window.openHealthifyApp = openHealthifyApp;
+window.uploadImage = uploadImage;
+
+
+
+
+  // Attach functions to `window` so they are globally accessible
+  window.saveSummary = saveSummary;
+  window.loadSummary = loadSummary;
+    
+
+    </script>
+    
+    <script>
+function calculateSleepHours() {
+    const sleepStart = document.getElementById("sleepStart").value;
+    const sleepEnd = document.getElementById("sleepEnd").value;
+    const sleepInput = document.getElementById("sleep");
+
+    if (sleepStart && sleepEnd) {
+        const start = new Date(`1970-01-01T${sleepStart}:00`);
+        const end = new Date(`1970-01-01T${sleepEnd}:00`);
+
+        let diff = (end - start) / (1000 * 60 * 60); // difference in hours
+
+        if (diff < 0) {
+            diff += 24; // handle cases where sleep time goes past midnight
+        }
+
+        sleepInput.value = diff.toFixed(2); // set the result in the sleep input
+    }
+}
+
+
+</script>
+
+  <script>
+  const swiper = new Swiper('.swiper-container', {
+    direction: 'horizontal',
+    slidesPerView: 1, // Show only one slide at a time
+    autoHeight: true, // Adjust height dynamically based on active slide
+      loop: true, // Enable looping
+    centeredSlides: false, // Do not center the slide
+    spaceBetween: 0, // No space between slides
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+  
+// Get the button and audio elements
+const playMusicButton = document.getElementById('play-music-button');
+const audio = document.getElementById('background-music');
+
+// Set the volume of the audio (0.0 is muted, 1.0 is full volume)
+audio.volume = 0.03; // Adjust to your preferred volume level
+
+// Toggle play/pause and button text
+playMusicButton.addEventListener('click', function() {
+  if (audio.paused) {
+    // Play the audio
+    audio.play();
+    playMusicButton.textContent = 'Stop Music'; // Change button text
+  } else {
+    // Pause the audio
+    audio.pause();
+    playMusicButton.textContent = ' Music'; // Change button text
+  }
+});  
+
+
+const quotes = [
+  "Within you, there is a stillness and a sanctuary to which you can retreat at any time.",
+  "Gratitude turns what we have into enough.",
+  "Every day is a chance to start over.",
+  "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
+  "Inhale courage, exhale fear.",
+  "Find joy in the ordinary.",
+  "The wound is the place where the light enters you.",
+  "Happiness is not what we get, but how we appreciate what we already have.",
+  "Adopt the pace of nature: her secret is patience.",
+  "You are the author of your own story. Write something beautiful.",
+  "Healing takes time, and asking for help is a courageous step.",
+  "Sometimes, you just need to breathe, trust, and let go.",
+  "Even in the chaos, there is something to be thankful for.",
+  "Don’t be afraid to explore the depths of your soul; you may find treasures untold.",
+  "When you realize nothing is lacking, the whole world belongs to you.",
+  "The best view comes after the hardest climb.",
+  "Let silence be your canvas and your thoughts, the art.",
+  "As the river flows effortlessly to the sea, let your mind flow with ease.",
+  "Be at peace with yourself, and the rest will follow.",
+  "Happiness blooms from within.",
+  "The sun will rise, and we will try again.",
+  "Small steps every day lead to big changes over time.",
+  "Let go of what you cannot control; embrace what you can.",
+  "Peace begins with a deep breath.",
+  "The quieter you become, the more you can hear.",
+  "Every sunset brings the promise of a new dawn.",
+  "Your only limit is your mind; set it free.",
+  "Joy is not in things; it is in us.",
+  "You can't pour from an empty cup. Take care of yourself first.",
+  "Growth is painful, but nothing is as painful as staying stuck where you don't belong.",
+  "There is no path to peace. Peace is the path.",
+  "You are not a drop in the ocean. You are the entire ocean in a drop.",
+  "Somewhere, something incredible is waiting to be known.",
+  "Happiness is letting go of what you think your life is supposed to look like.",
+  "Pause. Breathe. Reflect. Repeat.",
+  "Nature does not hurry, yet everything is accomplished.",
+  "The more you let go, the higher you rise.",
+  "A grateful heart is a magnet for miracles.",
+  "Kindness is a language the blind can see and the deaf can hear."
+];
+
+function newQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  document.getElementById('quote').innerText = quotes[randomIndex];
+}
+
+// Change quote every 15 seconds
+setInterval(newQuote, 7000);
+
+newQuote();
+  
+  
+</script>
+
+    
+</body>
+</html>
