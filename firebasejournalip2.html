@@ -91,7 +91,7 @@
             padding: 10px 15px;
             border: none;
             background-color: rgba(255, 255, 255, 0.5);
-            color: white;
+            color: black;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
@@ -178,7 +178,7 @@ input[type="checkbox"]:checked + .circle {
     left: 50%; /* Center horizontally */
     top: 50%; /* Center vertically */
     transform: translate(-50%, -50%); /* Shift it back to center */
-    background-color: #fff;
+    background-color: dimgrey;
     padding: 20px;
     border-radius: 5px;
     width: 300px; /* Fixed width for modal content */
@@ -806,6 +806,7 @@ async function saveSummary() {
         improvement: document.getElementById('improvement').value,
         accomplishments: document.getElementById('accomplishments').value,
         screenTime: document.getElementById('screenTime').value,
+        creativeThoughts: document.getElementById('creativeThoughts').value,
     };
 
     try {
@@ -860,6 +861,7 @@ async function loadSummary() {
             document.getElementById('improvement').value = data.improvement ?? '';
             document.getElementById('accomplishments').value = data.accomplishments ?? '';
             document.getElementById('screenTime').value = data.screenTime ?? '';
+            document.getElementById('creativeThoughts').value = data.creativeThoughts ?? '';
         } else {
             console.log("No data found for this date.");
             alert("No data found for this date.");
@@ -880,6 +882,7 @@ async function loadSummary() {
             document.getElementById('improvement').value = '';
             document.getElementById('accomplishments').value = '';
             document.getElementById('screenTime').value = '';
+           document.getElementById('creativeThoughts').value = '';
         }
     } catch (error) {
         console.error("Error loading summary:", error);
