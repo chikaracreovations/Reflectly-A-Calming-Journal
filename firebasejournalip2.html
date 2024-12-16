@@ -292,11 +292,17 @@ input[type="checkbox"]:checked + .circle {
         <h3>"Your very own Journal"</h3>
         <input type="date" id="date" onchange="loadSummary()" />
         
+        
+   
+        
      <!-- Sign-In/Sign-Up Modal within a specific container class -->
 <div class="auth-module">
     <div id="authModal" class="auth-modal">
         <div class="auth-modal-content">
               <span id="closeAuthModal" class="close">&times;</span> <!-- Close button -->
+         
+
+         
             
             <h2>Sign In / Sign Up</h2>
             
@@ -308,6 +314,11 @@ input[type="checkbox"]:checked + .circle {
                 <p id="authError" class="auth-error"></p>
             </form>
         </div>
+    </div>
+    
+   <br> 
+     <div id="user-info">
+        <p5 id="user-name">Checking user...</p5>
     </div>
 
     <!-- Buttons to trigger modal and logout -->
@@ -534,7 +545,7 @@ Enter a notable event or memory here.
 
 
 
-        
+  
 
       
 
@@ -579,6 +590,19 @@ Enter a notable event or memory here.
   
   
 // Initialize Firebase Authentication and get a reference to the service
+
+// Get the user info
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // If a user is signed in, display their info
+    document.getElementById("user-name").textContent = `Signed in as: ${user.displayName || user.email}`;
+  } else {
+    // If no user is signed in
+    document.getElementById("user-name").textContent = "No user signed in";
+  }
+});
+
+
 
 // Sign in functionality
 
