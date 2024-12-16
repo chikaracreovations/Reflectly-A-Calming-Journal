@@ -18,7 +18,7 @@
             font-family: Arial, sans-serif;
             padding: 20px;
             background-color: #ffffff;
-            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUJhqIWV8xhGd_3rsDDulhKXYX8y-HV1qkDNC3YaJmP0J2BotIlRrZhIZI&s=10') ;
+            background: url('background.jpeg') ;
   
         }
         .container {
@@ -29,7 +29,7 @@
             border-radius: 10px;
             box-shadow: 2px 2px 10px #aaa;
             background-color: #ffffff;
-         background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsfoGTE_FQ7HzGAAtA-i07wmzVu4UbQfQAY_McEfLCxeThumO2nUVLWIAR&s=10') center;
+         background: url('container.jpeg') center;
   background-size:cover;   
             
             
@@ -37,6 +37,11 @@
         h2 {
             text-align: center;
             color: mintcream;
+        }
+        
+        p5 {
+            text-align: center;
+            color: white;
         }
         
        h3 {
@@ -248,6 +253,30 @@ input[type="checkbox"]:checked + .circle {
     font-size: 24px;
     color: #333;
   }
+  
+  .swiper-button-next,
+.swiper-button-prev {
+    color: white  !important; /* Change the color to your desired value */
+    position: absolute; /* Position relative to swiper-container */
+    bottom: 20px; /* Position buttons at the bottom */
+    z-index: 10; /* Bring buttons above other content */
+    font-size: 2% !important ; /* Optional: Adjust size */
+    transition: color 0.3s ease; /* Add a smooth transition for hover effects */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: white; /* Change color on hover */
+}
+
+
+.swiper-button-next {
+    right: -0.25% !important; /* Move next button further to the right */
+}
+
+.swiper-button-prev {
+    left: -0.25% !important; /* Move previous button further to the left */
+}
 
 
 
@@ -255,11 +284,12 @@ input[type="checkbox"]:checked + .circle {
 </head>
 <body>
   
-  #ChikaraCreovations
+  <p5>#ChikaraCreovations</p5>
   
   
     <div class="container">
-        <h2>Daily Summary</h2>
+      <h2>"Reflectly"</h2>
+        <h3>"Your very own Journal"</h3>
         <input type="date" id="date" onchange="loadSummary()" />
         
      <!-- Sign-In/Sign-Up Modal within a specific container class -->
@@ -289,6 +319,7 @@ input[type="checkbox"]:checked + .circle {
 
  <!-- Background Music -->
   <audio id="background-music" autoplay loop>
+    
     <source src="journal.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio> 
@@ -307,8 +338,9 @@ input[type="checkbox"]:checked + .circle {
     <!-- Journaling Key Metrics -->
 <!-- Journaling Key Metrics -->
 <div class="swiper-slide">
-  <h2>Journaling Key Metrics</h2>
+  <h2> Key Metrics</h2>
   
+  <p> Swipe Right for more</p>
   
   
   <!-- Sleep -->
@@ -337,7 +369,7 @@ input[type="checkbox"]:checked + .circle {
         
         
                 <div>
-            <h3>Today's Habits:</h3>
+            <h3>Productive Habits:</h3>
             <input type="number" id="habits" placeholder="No. Of Habits Completed "/>
         </div>
        
@@ -362,39 +394,6 @@ input[type="checkbox"]:checked + .circle {
     <input type="number" id="workouthours" placeholder="Enter duration of workout" />
   </div>
   
-  <div>
-    <h4>Select Workout Days</h4>
-    <div class="day-checkboxes">
-        <label>
-            <input type="checkbox" id="monday">
-            <span class="circle">M</span>
-        </label>
-        <label>
-            <input type="checkbox" id="tuesday">
-            <span class="circle">T</span>
-        </label>
-        <label>
-            <input type="checkbox" id="wednesday">
-            <span class="circle">W</span>
-        </label>
-        <label>
-            <input type="checkbox" id="thursday">
-            <span class="circle">T</span>
-        </label>
-        <label>
-            <input type="checkbox" id="friday">
-            <span class="circle">F</span>
-        </label>
-        <label>
-            <input type="checkbox" id="saturday">
-            <span class="circle">S</span>
-        </label>
-        <label>
-            <input type="checkbox" id="sunday">
-            <span class="circle">S</span>
-        </label>
-    </div>
-</div>
 
   
   <!-- Medicines -->
@@ -464,28 +463,41 @@ What steps did I take today to work towards my goals?"
       <h2>Venting Out</h2>
       <p> Don’t Worry Its a Safe Space!</p>
         <div>
-            <h3>Things that sucked:</h3>
-             <textarea id="sucked" rows="3" placeholder="What challenges or setbacks did I face today?"></textarea>
+            <h3>"Let It Out"</h3>
+             <textarea id="sucked" rows="12" placeholder="What’s Bothering You? 
+Describe the situation or issue that's on your mind.
+
+Write down any frustrations, thoughts, or stress you want to let go of.
+
+"></textarea>
             </div>
         
         <div>
-            <h3>Areas for Improvement:</h3>
+            <h3>"How Can You Move Forward?"</h3>
             <textarea id="improvement" rows="3" placeholder =
-"What could I have done differently today?
-
-What is one thing I can work on for tomorrow?
-
-What mistakes did I make today, and what can I learn from them?"
+"Consider potential solutions, changes, or steps to feel better."
             ></textarea>
         </div>
     </div>
 
-    <!-- Images and Key Events -->
-    <div class="swiper-slide">
-      <h2>Images and Key Events</h2>
-      <input type="file" id="imageUpload" accept="image/*" />
-      <button id="uploadImageButton">Upload Image</button>
-    </div>
+
+<!-- Images and Key Events -->
+<div class="swiper-slide">
+  <h2>Images and Key Events</h2>
+
+  <button id="uploadImageButton">Upload Image
+  [Feature will be added soon]
+  
+  </button>
+  
+  
+        <h3>Key Events</h3>
+        <textarea id="keyevents" rows="6" placeholder="What significant event happened today?
+        
+Enter a notable event or memory here.
+        "></textarea>
+    
+</div>
 
     <!-- Creative Thoughts -->
     <div class="swiper-slide">
@@ -495,7 +507,11 @@ What mistakes did I make today, and what can I learn from them?"
         <textarea id="creativeThoughts" rows="6" placeholder="Write down your creative ideas or thoughts"></textarea>
       </div>
     </div>
+  
+
+    
   </div>
+
 
 </div>
 
@@ -538,7 +554,7 @@ What mistakes did I make today, and what can I learn from them?"
   // Import Firebase SDKs
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-  import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+  import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
   import { getFirestore, collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
   import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
@@ -559,6 +575,8 @@ What mistakes did I make today, and what can I learn from them?"
   const db = getFirestore(app);
   const storage = getStorage(app);
   const auth = getAuth(app); // Initialize Firebase Auth
+  
+  
   
 // Initialize Firebase Authentication and get a reference to the service
 
@@ -716,60 +734,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
   
-  
-const uploadImage = () => {
-    const fileInput = document.getElementById('imageUpload');
-    const file = fileInput.files[0];
 
-    if (file) {
-        const userId = firebase.auth().currentUser.uid;
-        const storageRef = firebase.storage().ref(`images/${userId}/${file.name}`);
-        const firestoreRef = firebase.firestore().collection('users').doc(userId).collection('images');
-
-        // Upload image to Firebase Storage
-        storageRef.put(file).then(snapshot => {
-            snapshot.ref.getDownloadURL().then(url => {
-                // Save the URL to Firestore
-                firestoreRef.add({
-                    url: url,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                });
-            });
-        });
-    }
-};
-
-const displayImages = () => {
-    const userId = firebase.auth().currentUser.uid;
-    const imagesRef = firebase.firestore().collection('users').doc(userId).collection('images');
-
-    imagesRef.get().then(querySnapshot => {
-        const imageContainer = document.getElementById('imageContainer');
-        imageContainer.innerHTML = ''; // Clear existing images
-
-        querySnapshot.forEach(doc => {
-            const imageData = doc.data();
-            const imgElement = document.createElement('img');
-            imgElement.src = imageData.url;
-            imgElement.classList.add('image-thumbnail');
-            imgElement.onclick = () => openModal(imageData.url);
-            imageContainer.appendChild(imgElement);
-        });
-    });
-};
-
-const openModal = (imageUrl) => {
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    modalImage.src = imageUrl;
-    modal.style.display = 'block';
-};
-
-const closeModal = () => {
-    document.getElementById('imageModal').style.display = 'none';
-};
-  
-  
   
 
  // Update saveSummary to be user-specific
@@ -807,6 +772,8 @@ async function saveSummary() {
         accomplishments: document.getElementById('accomplishments').value,
         screenTime: document.getElementById('screenTime').value,
         creativeThoughts: document.getElementById('creativeThoughts').value,
+        keyevents: document.getElementById('keyevents').value,
+        
     };
 
     try {
@@ -862,6 +829,9 @@ async function loadSummary() {
             document.getElementById('accomplishments').value = data.accomplishments ?? '';
             document.getElementById('screenTime').value = data.screenTime ?? '';
             document.getElementById('creativeThoughts').value = data.creativeThoughts ?? '';
+            document.getElementById('keyevents').value = data.keyevents ?? '';
+            
+            
         } else {
             console.log("No data found for this date.");
             alert("No data found for this date.");
@@ -883,6 +853,7 @@ async function loadSummary() {
             document.getElementById('accomplishments').value = '';
             document.getElementById('screenTime').value = '';
            document.getElementById('creativeThoughts').value = '';
+           document.getElementById('keyevents').value = '';
         }
     } catch (error) {
         console.error("Error loading summary:", error);
@@ -926,7 +897,7 @@ async function loadSummary() {
   window.loadSummary = loadSummary;
 window.openFitNotes = openFitNotes;
 window.openHealthifyApp = openHealthifyApp;
-window.uploadImage = uploadImage;
+
 
 
 
@@ -979,12 +950,19 @@ function calculateSleepHours() {
     },
   });
   
-// Get the button and audio elements
 const playMusicButton = document.getElementById('play-music-button');
 const audio = document.getElementById('background-music');
 
 // Set the volume of the audio (0.0 is muted, 1.0 is full volume)
 audio.volume = 0.03; // Adjust to your preferred volume level
+
+// Automatically try to play music when the page loads
+window.onload = function() {
+  audio.play().catch(function(error) {
+    // Handle the case where autoplay is blocked
+    console.log("Autoplay is blocked, waiting for user interaction...");
+  });
+};
 
 // Toggle play/pause and button text
 playMusicButton.addEventListener('click', function() {
@@ -995,10 +973,9 @@ playMusicButton.addEventListener('click', function() {
   } else {
     // Pause the audio
     audio.pause();
-    playMusicButton.textContent = ' Music'; // Change button text
+    playMusicButton.textContent = 'Play Music'; // Change button text
   }
-});  
-
+});
 
 const quotes = [
   "Within you, there is a stillness and a sanctuary to which you can retreat at any time.",
