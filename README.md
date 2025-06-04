@@ -62,17 +62,6 @@ Contributions are welcome!
 
 
 
----
-
-📦 Folder Structure
-
-Reflectly-A-Calming-Journal/
-├── index.html
-├── style.css
-├── script.js
-├── assets/
-│   └── (icons, images, background music, etc.)
-
 
 ---
 
