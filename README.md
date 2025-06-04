@@ -58,7 +58,7 @@ Contributions are welcome!
 🌐 Live Demo
 
 > 🔗 Try Reflectly Now
-[Reflectly](https://chikaracreovations.github.io/Reflectly-A-Calming-Journal/public/index.html)
+[Reflectly](https://chikaracreovations.github.io/Reflectly-A-Calming-Journal/index.html)
 
 
 

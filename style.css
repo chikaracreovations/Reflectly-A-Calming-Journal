@@ -3,7 +3,7 @@
             font-family: Arial, sans-serif;
             padding: 20px;
             background-color: #ffffff;
-            background: url('assets/images/background.jpeg') ;
+            background: url('images/background.jpeg') ;
   
         }
         .container {
@@ -14,7 +14,7 @@
             border-radius: 10px;
             box-shadow: 2px 2px 10px #aaa;
             background-color: #ffffff;
-         background: url('assets/images/container.jpeg') center;
+         background: url('images/container.jpeg') center;
   background-size:cover;   
             
             
