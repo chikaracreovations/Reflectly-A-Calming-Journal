@@ -53,7 +53,7 @@ Contributions are welcome!
 4. Push to the branch: `git push origin feature/feature-name`
 5. Open a pull request
 
-
+---
 
 🌐 Live Demo
 
