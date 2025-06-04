@@ -35,24 +35,23 @@
 ```bash
 git clone https://github.com/chikaracreovations/Reflectly-A-Calming-Journal.git
 cd Reflectly-A-Calming-Journal
+```
 
-2. Open in Browser
+### 2. Open in Browser
 
+```bash
 open index.html
 # or double-click the file in your file explorer
+```
 
-
----
 ## 🤝 Contributing
 
 Contributions are welcome!
 1. Fork the repository
-2. Create your feature branch: git checkout -b feature/feature-name
-3. Commit your changes: git commit -m "Add feature"
-4. Push to the branch: git push origin feature/feature-name
+2. Create your feature branch: `git checkout -b feature/feature-name`
+3. Commit your changes: `git commit -m "Add feature"`
+4. Push to the branch: `git push origin feature/feature-name`
 5. Open a pull request
-
----
 
 
 
